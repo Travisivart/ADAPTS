@@ -1,0 +1,6 @@
+﻿name,flows,min,max,,,,,,,,,,,,
+attacker3,18072,100,1000,,"SELECT d.name, count(*) as 'flows', case when d.name like 'server%' then 1000 else 100 end as 'min', case when d.name like 'server%' then 10000 else 1000 end as 'max'",,,,,,,,,,
+user2,18023,100,1000,,,,,,,,,,,,"FROM mtd.packet_logs l, mtd.devices d "
+attacker1,90,100,1000,,,,,,,,,,,,WHERE d.ipv4 = l.ip_src and ip_src <> ' ' and ip_dst <> ' ' and from_unixtime(frame_time)
+user1,54,100,1000,,                                        between timestamp('2017-11-06 00:05:18') and timestamp('2017-11-07 00:05:18'),,,,,,,,,,
+server1,36,1000,10000,,                                        group by d.name order by COUNT(*) desc;,,,,,,,,,,

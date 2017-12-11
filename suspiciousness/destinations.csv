@@ -1,0 +1,7 @@
+﻿name,destinations,min,max,,,,,,,,,,,,,,
+attacker1,2,1,10,,"SELECT d.name, COUNT(DISTINCT ip_dst) AS total, case when d.name like 'server%' then 10 else 1 end as 'min',",,,,,,,,,,,,
+user1,1,1,10,,,,,,,,,,,,,,case when d.name like 'server%' then 1000 else 10 end as 'max'
+user2,1,1,10,,,,,,,,,,,,"FROM mtd.packet_logs l, mtd.devices d",,
+attacker3,1,1,10,,,,,,,,,,,,WHERE d.ipv4 = l.ip_src and ip_src <> ' ' and ip_dst <> ' ' and from_unixtime(frame_time),,
+server1,1,10,1000,,                                        between timestamp('2017-11-06 00:05:18') and timestamp('2017-11-07 00:05:18'),,,,,,,,,,,,
+,,,,,                                        group by d.name order by COUNT(DISTINCT ip_dst) desc;,,,,,,,,,,,,

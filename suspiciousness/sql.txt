@@ -1,0 +1,19 @@
+SELECT d.name, COUNT(DISTINCT ip_dst) AS total, case when d.name like 'server%' then 10 else 1 end as 'min',
+												case when d.name like 'server%' then 1000 else 10 end as 'max'
+										FROM mtd.packet_logs l, mtd.devices d
+										WHERE d.ipv4 = l.ip_src and ip_src <> ' ' and ip_dst <> ' ' and from_unixtime(frame_time)
+                                        between timestamp('2017-12-02 00:00:00') and timestamp('2017-12-02 23:59:59')
+                                        group by d.name order by COUNT(DISTINCT ip_dst) desc;
+                                        
+SELECT d.name, count(*) as 'flows', case when d.name like 'server%' then 1000 else 100 end as 'min', case when d.name like 'server%' then 10000 else 1000 end as 'max'
+										FROM mtd.packet_logs l, mtd.devices d 
+										WHERE d.ipv4 = l.ip_src and ip_src <> ' ' and ip_dst <> ' ' and from_unixtime(frame_time)
+                                        between timestamp('2017-12-02 00:00:00') and timestamp('2017-12-02 23:59:59')
+                                        group by d.name order by COUNT(*) desc;
+                                        
+                                        
+SELECT d.name , SUM(frame_len) as 'bytes', case when d.name like 'server%' then 100000 else 100 end as 'min', case when d.name like 'server%' then 100000000 else 100000 end as 'max'
+										FROM mtd.packet_logs l, mtd.devices d where d.ipv4 = l.ip_src and ip_src <> ' ' and ip_dst <> ' '
+                                        and from_unixtime(frame_time)
+                                        between timestamp('2017-12-02 00:00:00') and timestamp('2017-12-02 23:59:59')
+                                        group by d.name order by SUM(frame_len) desc;

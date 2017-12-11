@@ -1,0 +1,13 @@
+Steps to run on the controller (The controller must be publicly routable, because if it is connected to the switch,
+the switch will not allow traffic through to it during the inistal setup phases, meaning that we can't finish the setup):
+
+Run the install:
+frenetic_install.sh - Installs everything you need to run and test frenetic_install
+
+To run a test in three seperate shell windows run them in this order:
+frenetic.sh - Starts up frenetic
+
+repeater.sh - Runs the repeater script which just takes all data coming in all ports and sends it out all ports
+
+Run on the switch itself (with minor modifications to the script to set the appropriate ethX ports and the ip of the controller)
+install_switch.sh

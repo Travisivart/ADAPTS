@@ -1,0 +1,25 @@
+#Run tshark on all switch-slave interfaces
+
+#root-switch
+tshark -i eth1 -i eth2 -i eth3 -i eth4
+
+#slave-switch
+tshark -i eth1 -i eth2 -i eth3 -i eth4 -i eth5 -i eth6 -i eth7
+
+#slave-switch using on the defined fields
+tshark -i eth1 -i eth2 -i eth3 -i eth4 -i eth5 -i eth6 -i eth7 -T fields  -e frame.number -e frame.time_relative -e frame.time_delta -e frame.time -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -e tcp.flags.syn -e _ws.col.Length -E header=y -E separator=, -E occurrence=f > test.csv
+
+
+#slave-switch ip host tree, shows ip connections and packet count for each address
+sudo tshark -q -z ip_hosts,tree -i eth1 -i eth2 -i eth3 -i eth4 -i eth5 -i eth6 -i eth7
+
+
+sudo tshark -w /var/file.pcap -i eth1 -i eth2 -i eth3 -i eth4 -i eth5 -i eth6 -i eth7 -T fields  -e frame.number -e frame.time_relative -e frame.time_delta -e frame.time -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -e tcp.flags.syn -e _ws.col.Length -E header=y -E separator=, -E occurrence=f
+
+sudo tshark -r /var/file.pcap -i eth1 -i eth2 -i eth3 -i eth4 -i eth5 -i eth6 -i eth7 -T fields  -e frame.number -e frame.time_relative -e frame.time_delta -e frame.time -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -e tcp.flags.syn -e _ws.col.Length -E header=y -E separator=, -E occurrence=f > test.csv
+
+tshark -r test.pcap -T fields -e frame.number -e frame.time -e eth.src -e eth.dst -e ip.src -e ip.dst -e ip.proto -E header=y -E separator=, -E quote=d -E occurrence=f > test.csv
+
+#new switch capture with revised fields for going into the database table 'packet_logs'
+sudo tshark -i eth1 -i eth2 -i eth3 -i eth4 -i eth5 -i eth6 -i eth7 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/slave-capture-12-02-2017.csv
+sudo tshark -i eth1 -i eth2 -i eth3 -i eth4 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/root-capture-12-02-2017.csv

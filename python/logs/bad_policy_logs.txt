@@ -1,0 +1,37 @@
+Bad Policies
+
+Time		Date		Command / Policy
+22:38:11	11/06/2017	asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+22:40:50	11/06/2017
+22:43:29	11/06/2017
+22:46:46	11/06/2017
+22:47:26	11/06/2017	asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+22:47:51	11/06/2017
+22:49:11	11/06/2017
+22:55:51	11/06/2017
+22:57:21	11/06/2017
+22:57:42	11/06/2017	asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:00:33	11/06/2017	asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:00:33	11/06/2017
+23:05:33	11/06/2017	asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:05:33	11/06/2017
+23:05:48	11/06/2017
+23:09:21	11/06/2017
+23:10:39	11/06/2017	asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:13:43	11/06/2017	asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:38:29	11/06/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:43:26	11/06/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:47:45	11/06/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:49:32	11/06/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:53:46	11/06/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:55:05	11/06/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+23:55:11	11/06/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+00:17:17	11/07/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.6")) >> SetPort(7)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+00:17:23	11/07/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.6")) >> SetPort(7)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+00:26:31	11/07/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.6")) >> SetPort(7)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+00:29:34	11/07/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.6")) >> SetPort(7)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+00:31:23	11/07/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.6")) >> SetPort(7)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+00:31:29	11/07/2017	Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.2")) >> SetPort(3)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.3")) >> SetPort(4)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.4")) >> SetPort(5)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.5")) >> SetPort(6)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.1")) >> SetPort(2)|Filter(SwitchEq(51570677359425) & IP4DstEq("10.0.0.6")) >> SetPort(7)|asdfa;lsdkjfl;akjsdf;laksjdf;lkasjdf;lasjdf;lasdf
+00:42:18	12/07/2017	Filter(SwitchEq("51570677359425") & IP4SrcEq("10.0.0.8") ) >> setPort(3) | Filter(SwitchEq("99947915534402") & IP4SrcEq("10.0.0.8") ) >> setPort(3)
+00:43:19	12/07/2017	Filter(SwitchEq(51570677359425) & IP4SrcEq("10.0.0.8") ) >> setPort(3) | Filter(SwitchEq(99947915534402) & IP4SrcEq("10.0.0.8") ) >> setPort(3)
+00:43:49	12/07/2017	Filter(SwitchEq(51570677359425) & IP4SrcEq("10.0.0.8")) >> setPort(3) | Filter(SwitchEq(99947915534402) & IP4SrcEq("10.0.0.8")) >> setPort(3)

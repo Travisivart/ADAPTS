@@ -1,0 +1,771 @@
+{
+  "pols": [
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "33035025751368"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 5
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 6
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 1
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "33035025751368"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 5
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 6
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 2
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "33035025751368"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 5
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 6
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 3
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "33035025751368"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 5
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 6
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 4
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "33035025751368"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 6
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 7
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 5
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "33035025751368"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 5
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 6
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "33035025751368"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 5
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 6
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 7
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "200298535524941"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 1
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "200298535524941"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 2
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "200298535524941"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 4
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 3
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "200298535524941"
+          },
+          "type": "filter"
+        },
+        {
+          "pols": [
+            {
+              "pred": {
+                "preds": [
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 1
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 2
+                    }
+                  },
+                  {
+                    "header": "location",
+                    "type": "test",
+                    "value": {
+                      "type": "physical",
+                      "port": 3
+                    }
+                  }
+                ],
+                "type": "or"
+              },
+              "type": "filter"
+            },
+            {
+              "header": "location",
+              "type": "mod",
+              "value": {
+                "type": "physical",
+                "port": 4
+              }
+            }
+          ],
+          "type": "seq"
+        }
+      ],
+      "type": "seq"
+    }
+  ],
+  "type": "union"
+}

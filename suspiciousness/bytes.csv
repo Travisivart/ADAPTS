@@ -1,0 +1,6 @@
+﻿name,bytes,min,max,,,,,,,,,,,,
+attacker3,233832736,100,100000,,"SELECT d.name , SUM(frame_len) as 'bytes', case when d.name like 'server%' then 100000 else 100 end as 'min', case when d.name like 'server%' then 100000000 else 100000 end as 'max'",,,,,,,,,,
+user2,1194454,100,100000,,,,,,,,,,,,"FROM mtd.packet_logs l, mtd.devices d where d.ipv4 = l.ip_src and ip_src <> ' ' and ip_dst <> ' '"
+attacker1,8820,100,100000,,                                        and from_unixtime(frame_time),,,,,,,,,,
+user1,5292,100,100000,,                                        between timestamp('2017-11-06 00:05:18') and timestamp('2017-11-07 00:05:18'),,,,,,,,,,
+server1,3528,100000,100000000,,                                        group by d.name order by SUM(frame_len) desc;,,,,,,,,,,

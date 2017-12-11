@@ -1,0 +1,4 @@
+User Number, User Name, IP Address, Connection Start Time, Connection Stop Time
+1, abc.com, 192.168.1.1, 2017-01-01 00:00:00, 2017-01-01 00:00:00
+2, xyz.com, 192.168.1.2, 2017-02-01 00:00:00, 2017-01-01 00:00:00
+3, cde.com, 192.168.1.3,  2017-03-01 00:00:00, 2017-01-01 00:00:00

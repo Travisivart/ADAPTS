@@ -1,0 +1,19 @@
+test1:
+user1 - vlc -Idummy udp://@:1234 --sout file/ts:bbb-vlc.mp4
+user2 - wget http://server1/bbb.mp4
+attacker1 - ping server1
+attacker2 - iperf -c server1 -t 60
+attacker3 - slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u http://server1 -x 10 -p 3
+qvm - scp -i key neelyt@server1:/var/www/html/bbb.mp4 ./
+server1 - iperf -s
+server1 - vlc -Idummy /var/www/html/bbb.mp4 --repeat --sout '#std{access=udp{ttl=7},mux=ts,dst=user1,port=1234}'
+
+test2:
+user1 - wget http://server1/bbb.mp4
+user2 - iperf -c server1 -t 60
+attacker1 - slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u http://server1 -x 10 -p 3
+attacker2 - ping user1
+attacker3 - slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u http://user1 -x 10 -p 3
+qvm - ping user2
+server1 - iperf -s
+server2 - iperf -c server1 -t 60

@@ -1,0 +1,31 @@
+{
+  "pols": [
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "33035025751368"
+          },
+          "type": "filter"
+        }
+      ],
+      "type": "seq"
+    },
+    {
+      "pols": [
+        {
+          "pred": {
+            "header": "switch",
+            "type": "test",
+            "value": "200298535524941"
+          },
+          "type": "filter"
+        }
+      ],
+      "type": "seq"
+    }
+  ],
+  "type": "union"
+}
