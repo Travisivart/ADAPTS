@@ -1,0 +1,292 @@
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="controller" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc3" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50943" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <routable_control_ip xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pcvm3-3.geni.it.cornell.edu" port="22" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pcvm3-3.geni.it.cornell.edu" port="22" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pcvm3-3.geni.it.cornell.edu" port="22" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pcvm3-3.geni.it.cornell.edu" port="22" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pcvm3-3.geni.it.cornell.edu" port="22" username="rlnzq8"/>
+      <emulab:console server="vhost3.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <emulab:vnode name="pcvm3-3" hardware_type="pcvm"/>
+    <host name="controller.e59c79dd5.ch-geni-net.geni.it.cornell.edu" ipv4="192.122.236.110"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="root-switch" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc2" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50951" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/router.svg"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU16-64-STD"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26890" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26890" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26890" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26890" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26890" username="rlnzq8"/>
+      <emulab:console server="vhost2.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-1" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50958" mac_address="021f9e4fc8c5">
+      <ip address="10.0.0.102" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-3" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50961" mac_address="0201d306310e">
+      <ip address="10.0.0.101" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-5" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50964" mac_address="0276ed5df1a8">
+      <ip address="10.0.0.103" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-7" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:eth1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50967" mac_address="0294c3b39607">
+      <ip address="10.0.0.50" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm2-11" hardware_type="pcvm"/>
+    <host name="root-switch.e59c79dd5.ch-geni-net.geni.it.cornell.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="server1" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc2" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50952" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26891" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26891" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26891" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26891" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26891" username="rlnzq8"/>
+      <emulab:console server="vhost2.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-2" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50960" mac_address="02c20765bf7d">
+      <ip address="10.0.0.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm2-12" hardware_type="pcvm"/>
+    <host name="server1.e59c79dd5.ch-geni-net.geni.it.cornell.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="server2" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc2" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50953" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26892" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26892" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26892" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26892" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26892" username="rlnzq8"/>
+      <emulab:console server="vhost2.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-0" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50957" mac_address="028cf3df3af9">
+      <ip address="10.0.0.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm2-13" hardware_type="pcvm"/>
+    <host name="server2.e59c79dd5.ch-geni-net.geni.it.cornell.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="server3" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc2" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50954" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26893" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26893" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26893" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26893" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pc2.geni.it.cornell.edu" port="26893" username="rlnzq8"/>
+      <emulab:console server="vhost2.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-4" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50963" mac_address="0276f9852954">
+      <ip address="10.0.0.3" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm2-14" hardware_type="pcvm"/>
+    <host name="server3.e59c79dd5.ch-geni-net.geni.it.cornell.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="slave-switch" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50948" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/router.svg"/>
+    <routable_control_ip xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1"/>
+    <sliver_type name="emulab-xen">
+      <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU16-64-STD"/>
+    </sliver_type>
+    <services>
+      <login authentication="ssh-keys" hostname="pcvm1-30.geni.it.cornell.edu" port="22" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pcvm1-30.geni.it.cornell.edu" port="22" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pcvm1-30.geni.it.cornell.edu" port="22" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pcvm1-30.geni.it.cornell.edu" port="22" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pcvm1-30.geni.it.cornell.edu" port="22" username="rlnzq8"/>
+      <emulab:console server="vhost1.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-6" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:eth1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50966" mac_address="02a61c3703d1">
+      <ip address="10.0.0.51" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-9" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50970" mac_address="02f21d07a244">
+      <ip address="10.0.0.107" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-11" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50973" mac_address="02a8dfcf3dff">
+      <ip address="10.0.0.108" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-13" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50976" mac_address="02ac32bf0b80">
+      <ip address="10.0.0.109" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-15" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50979" mac_address="020f61f2ba06">
+      <ip address="10.0.0.105" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-17" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50982" mac_address="0222d33d2288">
+      <ip address="10.0.0.106" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface client_id="interface-21" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50985" mac_address="02ba1fd2f626">
+      <ip address="10.0.0.104" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm1-30" hardware_type="pcvm"/>
+    <host name="slave-switch.e59c79dd5.ch-geni-net.geni.it.cornell.edu" ipv4="192.122.236.102"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="attacker1" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50944" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <routable_control_ip xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pcvm1-6.geni.it.cornell.edu" port="22" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pcvm1-6.geni.it.cornell.edu" port="22" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pcvm1-6.geni.it.cornell.edu" port="22" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pcvm1-6.geni.it.cornell.edu" port="22" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pcvm1-6.geni.it.cornell.edu" port="22" username="rlnzq8"/>
+      <emulab:console server="vhost1.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-8" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50969" mac_address="0217c096b55a">
+      <ip address="10.0.0.7" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm1-6" hardware_type="pcvm"/>
+    <host name="attacker1.e59c79dd5.ch-geni-net.geni.it.cornell.edu" ipv4="192.122.236.100"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="attacker2" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50945" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <routable_control_ip xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pcvm1-27.geni.it.cornell.edu" port="22" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pcvm1-27.geni.it.cornell.edu" port="22" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pcvm1-27.geni.it.cornell.edu" port="22" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pcvm1-27.geni.it.cornell.edu" port="22" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pcvm1-27.geni.it.cornell.edu" port="22" username="rlnzq8"/>
+      <emulab:console server="vhost1.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-10" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50972" mac_address="02fcb99edb1c">
+      <ip address="10.0.0.8" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm1-27" hardware_type="pcvm"/>
+    <host name="attacker2.e59c79dd5.ch-geni-net.geni.it.cornell.edu" ipv4="192.122.236.101"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="attacker3" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50946" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26892" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26892" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26892" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26892" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26892" username="rlnzq8"/>
+      <emulab:console server="vhost1.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-12" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50975" mac_address="02954a0865ac">
+      <ip address="10.0.0.9" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm1-28" hardware_type="pcvm"/>
+    <host name="attacker3.e59c79dd5.ch-geni-net.geni.it.cornell.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="user1" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50949" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <routable_control_ip xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pcvm1-31.geni.it.cornell.edu" port="22" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pcvm1-31.geni.it.cornell.edu" port="22" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pcvm1-31.geni.it.cornell.edu" port="22" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pcvm1-31.geni.it.cornell.edu" port="22" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pcvm1-31.geni.it.cornell.edu" port="22" username="rlnzq8"/>
+      <emulab:console server="vhost1.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-14" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50978" mac_address="02afc16ece91">
+      <ip address="10.0.0.5" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm1-31" hardware_type="pcvm"/>
+    <host name="user1.e59c79dd5.ch-geni-net.geni.it.cornell.edu" ipv4="192.122.236.103"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="user2" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50950" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26896" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26896" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26896" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26896" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26896" username="rlnzq8"/>
+      <emulab:console server="vhost1.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-16" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50981" mac_address="02ba9aa6c5fc">
+      <ip address="10.0.0.6" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm1-32" hardware_type="pcvm"/>
+    <host name="user2.e59c79dd5.ch-geni-net.geni.it.cornell.edu"/>
+  </node>
+  <node xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" client_id="qvm" component_manager_id="urn:publicid:IDN+geni.it.cornell.edu+authority+cm" component_id="urn:publicid:IDN+geni.it.cornell.edu+node+pc1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50947" exclusive="false">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/VM-noTxt-centered.svg"/>
+    <sliver_type name="default-vm"/>
+    <services>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26893" username="neelyt"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26893" username="calyamp"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26893" username="nc5ff"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26893" username="mdvy96"/>
+      <login authentication="ssh-keys" hostname="pc1.geni.it.cornell.edu" port="26893" username="rlnzq8"/>
+      <emulab:console server="vhost1.shared-nodes.emulab-ops.geni.it.cornell.edu"/>
+    </services>
+    <interface client_id="interface-20" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50984" mac_address="02952afd3f82">
+      <ip address="10.0.0.4" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <emulab:vnode name="pcvm1-29" hardware_type="pcvm"/>
+    <host name="qvm.e59c79dd5.ch-geni-net.geni.it.cornell.edu"/>
+  </node>
+  <link client_id="link-0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50956">
+    <interface_ref client_id="interface-0" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50957"/>
+    <interface_ref client_id="interface-1" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50958"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50959">
+    <interface_ref client_id="interface-2" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50960"/>
+    <interface_ref client_id="interface-3" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50961"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-2" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50962">
+    <interface_ref client_id="interface-4" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50963"/>
+    <interface_ref client_id="interface-5" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50964"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-3" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50965" vlantag="259">
+    <interface_ref client_id="interface-6" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:eth1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50966"/>
+    <interface_ref client_id="interface-7" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc2:eth1" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50967"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-4" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50968">
+    <interface_ref client_id="interface-8" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50969"/>
+    <interface_ref client_id="interface-9" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50970"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-5" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50971">
+    <interface_ref client_id="interface-10" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50972"/>
+    <interface_ref client_id="interface-11" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50973"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-6" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50974">
+    <interface_ref client_id="interface-12" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50975"/>
+    <interface_ref client_id="interface-13" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50976"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-7" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50977">
+    <interface_ref client_id="interface-14" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50978"/>
+    <interface_ref client_id="interface-15" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50979"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-8" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50980">
+    <interface_ref client_id="interface-16" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50981"/>
+    <interface_ref client_id="interface-17" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50982"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <link client_id="link-10" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50983">
+    <interface_ref client_id="interface-20" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50984"/>
+    <interface_ref client_id="interface-21" component_id="urn:publicid:IDN+geni.it.cornell.edu+interface+pc1:lo0" sliver_id="urn:publicid:IDN+geni.it.cornell.edu+sliver+50985"/>
+    <component_manager name="urn:publicid:IDN+geni.it.cornell.edu+authority+cm"/>
+  </link>
+  <rs:site_info xmlns:rs="http://www.protogeni.net/resources/rspec/ext/site-info/1">
+    <rs:location country="US" latitude="42.453877" longitude="-76.484370"/>
+  </rs:site_info>
+</rspec>
