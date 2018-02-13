@@ -1,303 +1,366 @@
--- MySQL Workbench Forward Engineering
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: mtd
+-- ------------------------------------------------------
+-- Server version	5.7.20-0ubuntu0.16.04.1
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- -----------------------------------------------------
--- Schema mtd
--- -----------------------------------------------------
+--
+-- Table structure for table `attackhistory`
+--
 
--- -----------------------------------------------------
--- Schema mtd
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mtd` DEFAULT CHARACTER SET latin1 ;
-USE `mtd` ;
+DROP TABLE IF EXISTS `attackhistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `attackhistory` (
+  `attacker_id` varchar(100) NOT NULL,
+  `source_IP` varchar(20) DEFAULT NULL,
+  `destination_IP` varchar(20) DEFAULT NULL,
+  `attackStartTime` datetime DEFAULT NULL,
+  `attackStopTime` datetime DEFAULT NULL,
+  `numberOfPackets` int(11) DEFAULT NULL,
+  PRIMARY KEY (`attacker_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `mtd`.`attackhistory`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`attackhistory` ;
+--
+-- Table structure for table `blacklist`
+--
 
-CREATE TABLE IF NOT EXISTS `mtd`.`attackhistory` (
-  `attacker_id` VARCHAR(100) NOT NULL,
-  `source_IP` VARCHAR(20) NULL DEFAULT NULL,
-  `destination_IP` VARCHAR(20) NULL DEFAULT NULL,
-  `attackStartTime` DATETIME NULL DEFAULT NULL,
-  `attackStopTime` DATETIME NULL DEFAULT NULL,
-  `numberOfPackets` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`attacker_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DROP TABLE IF EXISTS `blacklist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blacklist` (
+  `ipAddress` varchar(20) DEFAULT NULL,
+  `macAddress` varchar(20) DEFAULT NULL,
+  `blacklistedOn` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `deviceType`
+--
 
--- -----------------------------------------------------
--- Table `mtd`.`blacklist`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`blacklist` ;
+DROP TABLE IF EXISTS `deviceType`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `deviceType` (
+  `type` tinyint(4) NOT NULL,
+  `name` varchar(45) NOT NULL DEFAULT 'defaultType',
+  PRIMARY KEY (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `mtd`.`blacklist` (
-  `ipAddress` VARCHAR(20) NULL DEFAULT NULL,
-  `macAddress` VARCHAR(20) NULL DEFAULT NULL,
-  `blacklistedOn` DATETIME NULL DEFAULT NULL)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+--
+-- Table structure for table `devices`
+--
 
-
--- -----------------------------------------------------
--- Table `mtd`.`logs`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`logs` ;
-
-CREATE TABLE IF NOT EXISTS `mtd`.`logs` (
-  `switch_id` BIGINT(20) UNSIGNED NOT NULL,
-  `port_id` INT(10) UNSIGNED NOT NULL,
-  `timestamp` DATETIME NOT NULL,
-  `rx_packets` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `delta_rx_packets` INT(10) UNSIGNED NULL DEFAULT '0',
-  `tx_packets` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `delta_tx_packets` INT(10) UNSIGNED NULL DEFAULT '0',
-  `rx_bytes` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `delta_rx_bytes` INT(10) UNSIGNED NULL DEFAULT '0',
-  `tx_bytes` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `delta_tx_bytes` INT(10) UNSIGNED NULL DEFAULT '0',
-  `rx_dropped` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `tx_dropped` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `rx_errors` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `tx_errors` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `rx_fram_err` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `rx_over_err` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `rx_crc_err` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-  `collisions` BIGINT(20) UNSIGNED NOT NULL,
-  PRIMARY KEY (`switch_id`, `port_id`, `timestamp`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `mtd`.`packet_logs`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`packet_logs` ;
-
-CREATE TABLE IF NOT EXISTS `mtd`.`packet_logs` (
-  `switch_id` BIGINT(20) UNSIGNED NOT NULL,
-  `port_id` INT(10) UNSIGNED NOT NULL,
-  `timestamp` DATETIME NOT NULL,
-  `ethType` SMALLINT(5) UNSIGNED NULL DEFAULT NULL,
-  `vlan` VARCHAR(45) NULL DEFAULT NULL,
-  `vlanPcp` VARCHAR(45) NULL DEFAULT NULL,
-  `hw_src` VARCHAR(17) NULL DEFAULT NULL,
-  `hw_dst` VARCHAR(17) NULL DEFAULT NULL,
-  `ip4Src` VARCHAR(15) NULL DEFAULT NULL,
-  `ip4Dst` VARCHAR(15) NULL DEFAULT NULL,
-  `ipProto` TINYINT(3) UNSIGNED NULL DEFAULT NULL,
-  `tcpSrcPort` SMALLINT(5) UNSIGNED NULL DEFAULT NULL,
-  `tcpDstPort` SMALLINT(5) UNSIGNED NULL DEFAULT NULL)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `mtd`.`qvm`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`qvm` ;
-
-CREATE TABLE IF NOT EXISTS `mtd`.`qvm` (
-  `qvmUID` VARCHAR(100) NOT NULL,
-  `qvmName` VARCHAR(255) NULL DEFAULT NULL,
-  `qvmIP` VARCHAR(20) NULL DEFAULT NULL,
-  `qvmStartTime` DATETIME NULL DEFAULT NULL,
-  `numberOfAttackers` INT(11) NULL DEFAULT NULL,
-  `currentlyActive` TINYINT(4) NULL DEFAULT NULL,
-  PRIMARY KEY (`qvmUID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `mtd`.`devices`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`devices` ;
-
-CREATE TABLE IF NOT EXISTS `mtd`.`devices` (
-  `deviceID` INT(11) UNSIGNED NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `ipv4` VARCHAR(15) NOT NULL,
-  `ipv6` VARCHAR(45) NULL,
-  `MAC` VARCHAR(45) NULL,
+DROP TABLE IF EXISTS `devices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `devices` (
+  `deviceID` int(11) unsigned NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `ipv4` varchar(15) DEFAULT NULL,
+  `ipv6` varchar(45) DEFAULT NULL,
+  `mac` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`deviceID`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
-ENGINE = InnoDB;
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `login`
+--
 
--- -----------------------------------------------------
--- Table `mtd`.`policies`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`policies` ;
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
+  `adminUID` varchar(255) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `passwd` varchar(255) DEFAULT NULL,
+  `salt` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`adminUID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `mtd`.`policies` (
-  `deviceID` INT(11) UNSIGNED NOT NULL,
-  `policyID` INT(11) UNSIGNED NOT NULL,
-  `policy` MEDIUMTEXT NOT NULL,
-  `loaded` TINYINT(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`deviceID`, `policyID`),
-  CONSTRAINT `policies_TO_devices`
-    FOREIGN KEY (`deviceID`)
-    REFERENCES `mtd`.`devices` (`deviceID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+--
+-- Table structure for table `logs`
+--
 
+DROP TABLE IF EXISTS `logs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `logs` (
+  `switch_id` bigint(20) unsigned NOT NULL,
+  `port_id` int(10) unsigned NOT NULL,
+  `timestamp` datetime NOT NULL,
+  `rx_packets` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `delta_rx_packets` int(10) unsigned DEFAULT '0',
+  `tx_packets` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `delta_tx_packets` int(10) unsigned DEFAULT '0',
+  `rx_bytes` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `delta_rx_bytes` int(10) unsigned DEFAULT '0',
+  `tx_bytes` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `delta_tx_bytes` int(10) unsigned DEFAULT '0',
+  `rx_dropped` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `tx_dropped` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `rx_errors` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `tx_errors` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `rx_fram_err` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `rx_over_err` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `rx_crc_err` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `collisions` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`switch_id`,`port_id`,`timestamp`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `mtd`.`servers`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`servers` ;
+--
+-- Table structure for table `packet_logs`
+--
 
-CREATE TABLE IF NOT EXISTS `mtd`.`servers` (
-  `serverUID` VARCHAR(100) NOT NULL,
-  `serverName` VARCHAR(255) NOT NULL,
-  `serverIP` VARCHAR(20) NOT NULL,
-  `serverCreatedOn` DATETIME NULL DEFAULT NULL,
-  `reputationValue` DOUBLE NULL DEFAULT NULL,
-  `bidValue` DOUBLE NULL DEFAULT NULL,
-  PRIMARY KEY (`serverUID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DROP TABLE IF EXISTS `packet_logs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `packet_logs` (
+  `switch_id` bigint(20) unsigned NOT NULL,
+  `trace_id` int(10) unsigned NOT NULL,
+  `frame_number` bigint(20) unsigned NOT NULL,
+  `frame_time` bigint(20) unsigned NOT NULL,
+  `frame_time_relative` float NOT NULL DEFAULT '0',
+  `frame_protocols` mediumtext NOT NULL,
+  `frame_len` int(11) unsigned NOT NULL,
+  `eth_src` varchar(17) DEFAULT NULL,
+  `eth_dst` varchar(17) DEFAULT NULL,
+  `eth_type` varchar(10) DEFAULT NULL,
+  `ip_proto` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `ip_src` varchar(15) DEFAULT NULL,
+  `ip_dst` varchar(15) DEFAULT NULL,
+  `tcp_srcport` smallint(5) unsigned NOT NULL,
+  `tcp_dstport` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `udp_srcport` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `udp_dstport` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `vlan` varchar(45) DEFAULT NULL,
+  `vlanPcp` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`switch_id`,`trace_id`,`frame_number`),
+  KEY `index_ip_src` (`ip_src`),
+  KEY `index_ip_dst` (`ip_dst`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `policies`
+--
 
--- -----------------------------------------------------
--- Table `mtd`.`switches`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`switches` ;
+DROP TABLE IF EXISTS `policies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `policies` (
+  `policyID` varchar(36) NOT NULL,
+  `deviceID` int(11) unsigned NOT NULL,
+  `policy` mediumtext NOT NULL,
+  `loaded` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`policyID`),
+  KEY `policies_TO_devices` (`deviceID`),
+  CONSTRAINT `policies_TO_devices` FOREIGN KEY (`deviceID`) REFERENCES `devices` (`deviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `mtd`.`switches` (
-  `switchID` BIGINT(20) UNSIGNED NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `totalPorts` SMALLINT(6) NOT NULL DEFAULT '0',
+--
+-- Table structure for table `qvm`
+--
+
+DROP TABLE IF EXISTS `qvm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `qvm` (
+  `qvmUID` varchar(100) NOT NULL,
+  `qvmName` varchar(255) DEFAULT NULL,
+  `qvmIP` varchar(20) DEFAULT NULL,
+  `qvmStartTime` datetime DEFAULT NULL,
+  `numberOfAttackers` int(11) DEFAULT NULL,
+  `currentlyActive` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`qvmUID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `rules`
+--
+
+DROP TABLE IF EXISTS `rules`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rules` (
+  `rule` mediumtext NOT NULL,
+  `loaded` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `servers`
+--
+
+DROP TABLE IF EXISTS `servers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `servers` (
+  `serverUID` varchar(100) NOT NULL,
+  `serverName` varchar(255) NOT NULL,
+  `serverIP` varchar(20) NOT NULL,
+  `serverCreatedOn` datetime DEFAULT NULL,
+  `reputationValue` double DEFAULT NULL,
+  `bidValue` double DEFAULT NULL,
+  PRIMARY KEY (`serverUID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `simple_policies`
+--
+
+DROP TABLE IF EXISTS `simple_policies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `simple_policies` (
+  `policyID` varchar(36) NOT NULL,
+  `deviceSrcID` int(11) DEFAULT NULL,
+  `deviceDstID` int(11) DEFAULT NULL,
+  `loaded` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`policyID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `suspiciousness_scores`
+--
+
+DROP TABLE IF EXISTS `suspiciousness_scores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `suspiciousness_scores` (
+  `name` varchar(45) NOT NULL,
+  `traceID` int(11) NOT NULL,
+  `score` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`name`,`traceID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `suspiciousness_scores_by_time`
+--
+
+DROP TABLE IF EXISTS `suspiciousness_scores_by_time`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `suspiciousness_scores_by_time` (
+  `frame_time` bigint(20) NOT NULL,
+  `score` double DEFAULT '0',
+  PRIMARY KEY (`frame_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `switch_devices`
+--
+
+DROP TABLE IF EXISTS `switch_devices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `switch_devices` (
+  `switchID` bigint(20) unsigned NOT NULL,
+  `deviceID` int(11) unsigned NOT NULL,
+  `port` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`switchID`,`deviceID`,`port`),
+  KEY `switch_devices_TO_devices_idx` (`deviceID`),
+  CONSTRAINT `switch_devices_TO_devices` FOREIGN KEY (`deviceID`) REFERENCES `devices` (`deviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `switch_devices_TO_switches` FOREIGN KEY (`switchID`) REFERENCES `switches` (`switchID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `switches`
+--
+
+DROP TABLE IF EXISTS `switches`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `switches` (
+  `switchID` bigint(20) unsigned NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `totalPorts` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`switchID`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `usermigration`
+--
 
--- -----------------------------------------------------
--- Table `mtd`.`switch_devices`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`switch_devices` ;
+DROP TABLE IF EXISTS `usermigration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usermigration` (
+  `userMigrationUID` varchar(100) NOT NULL,
+  `userIP` varchar(20) DEFAULT NULL,
+  `originalServerIP` varchar(20) DEFAULT NULL,
+  `migratedServerIP` varchar(20) DEFAULT NULL,
+  `migrationStartTime` datetime DEFAULT NULL,
+  `migrationStopTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`userMigrationUID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE IF NOT EXISTS `mtd`.`switch_devices` (
-  `switchID` BIGINT(20) UNSIGNED NOT NULL,
-  `deviceID` INT(11) UNSIGNED NOT NULL,
-  `port` INT(11) UNSIGNED NULL DEFAULT 0,
-  PRIMARY KEY (`switchID`, `deviceID`),
-  INDEX `switch_devices_TO_devices_idx` (`deviceID` ASC),
-  CONSTRAINT `switch_devices_TO_switches`
-    FOREIGN KEY (`switchID`)
-    REFERENCES `mtd`.`switches` (`switchID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `switch_devices_TO_devices`
-    FOREIGN KEY (`deviceID`)
-    REFERENCES `mtd`.`devices` (`deviceID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+--
+-- Table structure for table `users`
+--
 
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `userUID` varchar(100) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `ipAddress` varchar(20) DEFAULT NULL,
+  `connectionStartTime` datetime DEFAULT NULL,
+  `connectionStopTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`userUID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `mtd`.`usermigration`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`usermigration` ;
+--
+-- Table structure for table `whitelist`
+--
 
-CREATE TABLE IF NOT EXISTS `mtd`.`usermigration` (
-  `userMigrationUID` VARCHAR(100) NOT NULL,
-  `userIP` VARCHAR(20) NULL DEFAULT NULL,
-  `originalServerIP` VARCHAR(20) NULL DEFAULT NULL,
-  `migratedServerIP` VARCHAR(20) NULL DEFAULT NULL,
-  `migrationStartTime` DATETIME NULL DEFAULT NULL,
-  `migrationStopTime` DATETIME NULL DEFAULT NULL,
-  PRIMARY KEY (`userMigrationUID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DROP TABLE IF EXISTS `whitelist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `whitelist` (
+  `ipv4` varchar(15) NOT NULL,
+  PRIMARY KEY (`ipv4`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- -----------------------------------------------------
--- Table `mtd`.`users`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mtd`.`users` ;
-
-CREATE TABLE IF NOT EXISTS `mtd`.`users` (
-  `userUID` VARCHAR(100) NOT NULL,
-  `username` VARCHAR(100) NULL DEFAULT NULL,
-  `ipAddress` VARCHAR(20) NULL DEFAULT NULL,
-  `connectionStartTime` DATETIME NULL DEFAULT NULL,
-  `connectionStopTime` DATETIME NULL DEFAULT NULL,
-  PRIMARY KEY (`userUID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- -----------------------------------------------------
--- Data for table `mtd`.`devices`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `mtd`;
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (1, 'user1', '10.0.0.5', NULL, NULL);
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (2, 'user2', '10.0.0.6', NULL, NULL);
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (3, 'attacker1', '10.0.0.7', NULL, NULL);
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (4, 'attacker2', '10.0.0.8', NULL, NULL);
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (5, 'attacker3', '10.0.0.9', NULL, NULL);
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (6, 'qvm', '10.0.0.4', NULL, NULL);
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (7, 'server1', '10.0.0.1', NULL, NULL);
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (8, 'server2', '10.0.0.2', NULL, NULL);
-INSERT INTO `mtd`.`devices` (`deviceID`, `name`, `ipv4`, `ipv6`, `MAC`) VALUES (9, 'server3', '10.0.0.3', NULL, NULL);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `mtd`.`policies`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `mtd`;
-INSERT INTO `mtd`.`policies` (`deviceID`, `policyID`, `policy`, `loaded`) VALUES (1, 1, 'Filter(SwitchEq(51570677359425) & IP4DstEq(\"10.0.0.5\")) >> SetPort(6)', 0);
-INSERT INTO `mtd`.`policies` (`deviceID`, `policyID`, `policy`, `loaded`) VALUES (2, 1, 'Filter(SwitchEq(51570677359425) & IP4DstEq(\"10.0.0.7\")) >> SetPort(2)', 0);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `mtd`.`switches`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `mtd`;
-INSERT INTO `mtd`.`switches` (`switchID`, `name`, `totalPorts`) VALUES (99947915534402, 'root-switch', 4);
-INSERT INTO `mtd`.`switches` (`switchID`, `name`, `totalPorts`) VALUES (51570677359425, 'slave-switch', 7);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `mtd`.`switch_devices`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `mtd`;
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (99947915534402, 7, 2);
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (99947915534402, 8, 1);
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (99947915534402, 9, 4);
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (51570677359425, 1, 6);
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (51570677359425, 2, 5);
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (51570677359425, 3, 2);
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (51570677359425, 4, 1);
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (51570677359425, 5, 7);
-INSERT INTO `mtd`.`switch_devices` (`switchID`, `deviceID`, `port`) VALUES (51570677359425, 6, 3);
-
-COMMIT;
-
+-- Dump completed on 2018-01-31 23:22:05
