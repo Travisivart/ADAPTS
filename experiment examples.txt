@@ -1,0 +1,101 @@
+		
+		
+		
+Experiment example 1 - Basic ping network traffic
+
+server1 - 
+server2 - 
+server3 - 
+user1 - ping -c 100 10.0.0.1
+user2 - ping -c 100 10.0.0.2
+user5 - ping -c 100 10.0.0.3
+attacker1 - ping -c 100 10.0.0.1
+attacker2 - ping -c 100 10.0.0.2
+attacker5 - ping -c 100 10.0.0.3
+root-switch - sudo tshark -i eth2 -i eth3 -i eth4 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/root-capture-02-12-2018.csv
+slave-switch-1 - sudo tshark -i eth1 -i eth3 -i eth4 -i eth5 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/slave-switch-1-capture-02-12-2018.csv
+slave-switch-1-1 - sudo tshark -i eth1 -i eth3 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/slave-switch-1-1-capture-02-12-2018.csv
+controller - frenetic http-controller --verbosity debug
+controller - python ADAPTS/python/examples/openNetwork-ADAPTS.py
+
+LOAD DATA LOCAL INFILE 'capture-02-12-2018.csv' INTO TABLE mtd.packet_logs FIELDS TERMINATED BY ',' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (switch_id,trace_id,frame_number,frame_time_relative,frame_time,frame_protocols,frame_len,eth_src,eth_dst,eth_type,ip_proto,ip_src,ip_dst,tcp_srcport,tcp_dstport,udp_srcport,udp_dstport);
+
+python ADAPTS/python/calcSS.py 1
+python ADAPTS/python/calcSSByTime.py 1
+
+Experiment example 2 - Full attack traffic
+
+server1 - vlc -Idummy /var/www/html/bbb.mp4 --repeat --sout '#std{access=udp{ttl=7},mux=ts,dst=10.0.0.11,port=1234}'
+server2 - 
+server3 - 
+user1 - vlc -Idummy udp://@:1234 --sout file/ts:bbb-vlc.mp4
+user2 - ping 10.0.0.2
+user5 - wget http://10.0.0.1/bbb.mp4
+attacker1 - sudo slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u http://10.0.0.1 -x 10 -p 3
+attacker2 - scp -i .ssh/key neelyt@10.0.0.2:/var/www/html/bbb.mp4 ./
+attacker5 - ping 10.0.0.3
+root-switch - sudo tshark -i eth2 -i eth3 -i eth4 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/root-capture-02-13-2018.csv
+slave-switch-1 - sudo tshark -i eth1 -i eth3 -i eth4 -i eth5 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/slave-switch-1-capture-02-13-2018.csv
+slave-switch-1-1 - sudo tshark -i eth1 -i eth3 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/slave-switch-1-1-capture-02-13-2018.csv
+controller - frenetic http-controller --verbosity debug
+controller - python ADAPTS/python/examples/openNetwork-ADAPTS.py
+
+LOAD DATA LOCAL INFILE 'capture-02-13-2018.csv' INTO TABLE mtd.packet_logs FIELDS TERMINATED BY ',' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (switch_id,trace_id,frame_number,frame_time_relative,frame_time,frame_protocols,frame_len,eth_src,eth_dst,eth_type,ip_proto,ip_src,ip_dst,tcp_srcport,tcp_dstport,udp_srcport,udp_dstport);
+
+python ADAPTS/python/calcSS.py 2
+python ADAPTS/python/calcSSByTime.py 2
+
+
+Experiment example 3 - Full attack traffic with blocking
+
+server1 - 
+server2 - iperf -s
+server3 - 
+user1 - iperf -c 10.0.0.2
+user2 - ping 10.0.0.2
+user5 - wget http://10.0.0.1/bbb.mp4
+attacker1 - scp -i .ssh/key neelyt@10.0.0.3:/var/www/html/bbb.mp4 ./
+attacker2 - scp -i .ssh/key neelyt@10.0.0.2:/var/www/html/bbb.mp4 ./
+attacker5 - sudo slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u http://10.0.0.1 -x 10 -p 3
+root-switch - sudo tshark -i eth2 -i eth3 -i eth4 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/root-capture-02-14-2018.csv
+slave-switch-1 - sudo tshark -i eth1 -i eth3 -i eth4 -i eth5 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/slave-switch-1-capture-02-14-2018.csv
+slave-switch-1-1 - sudo tshark -i eth1 -i eth3 -T fields  -e frame.number -e frame.time_relative -e frame.time_epoch -e frame.protocols -e frame.len -e eth.src -e eth.dst -e eth.type -e ip.proto -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e udp.srcport -e udp.dstport -E header=y -E separator=, -E occurrence=f > /users/neelyt/slave-switch-1-1-capture-02-14-2018.csv
+controller - frenetic http-controller --verbosity debug
+controller - python ADAPTS/python/examples/openNetwork-ADAPTS.py
+
+LOAD DATA LOCAL INFILE 'capture-02-14-2018.csv' INTO TABLE mtd.packet_logs FIELDS TERMINATED BY ',' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (switch_id,trace_id,frame_number,frame_time_relative,frame_time,frame_protocols,frame_len,eth_src,eth_dst,eth_type,ip_proto,ip_src,ip_dst,tcp_srcport,tcp_dstport,udp_srcport,udp_dstport);
+
+python ADAPTS/python/calcSS.py 3
+python ADAPTS/python/calcSSByTime.py 3
+
+
+
+DELETE FROM mtd.suspiciousness_scores; 
+INSERT mtd.suspiciousness_scores SELECT * FROM mtd.suspiciousness_scores_1;
+DELETE FROM mtd.suspiciousness_scores_by_time; 
+INSERT mtd.suspiciousness_scores_by_time SELECT * FROM mtd.suspiciousness_scores_by_time_1;
+
+DELETE FROM mtd.suspiciousness_scores; 
+INSERT mtd.suspiciousness_scores SELECT * FROM mtd.suspiciousness_scores_2;
+DELETE FROM mtd.suspiciousness_scores_by_time; 
+INSERT mtd.suspiciousness_scores_by_time SELECT * FROM mtd.suspiciousness_scores_by_time_2;
+
+DELETE FROM mtd.suspiciousness_scores; 
+INSERT mtd.suspiciousness_scores SELECT * FROM mtd.suspiciousness_scores_3;
+DELETE FROM mtd.suspiciousness_scores_by_time; 
+INSERT mtd.suspiciousness_scores_by_time SELECT * FROM mtd.suspiciousness_scores_by_time_3;
+
+DELETE FROM mtd.suspiciousness_scores; 
+INSERT mtd.suspiciousness_scores SELECT * FROM mtd.suspiciousness_scores_test_1_w;
+DELETE FROM mtd.suspiciousness_scores_by_time; 
+INSERT mtd.suspiciousness_scores_by_time SELECT * FROM mtd.suspiciousness_scores_by_time_1_w;
+
+DELETE FROM mtd.suspiciousness_scores; 
+INSERT mtd.suspiciousness_scores SELECT * FROM mtd.suspiciousness_scores_test_2_w;
+DELETE FROM mtd.suspiciousness_scores_by_time; 
+INSERT mtd.suspiciousness_scores_by_time SELECT * FROM mtd.suspiciousness_scores_by_time_2_w;
+
+DELETE FROM mtd.suspiciousness_scores; 
+INSERT mtd.suspiciousness_scores SELECT * FROM mtd.suspiciousness_scores_test_3_w;
+DELETE FROM mtd.suspiciousness_scores_by_time; 
+INSERT mtd.suspiciousness_scores_by_time SELECT * FROM mtd.suspiciousness_scores_by_time_3_w;
