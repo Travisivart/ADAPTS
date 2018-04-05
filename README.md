@@ -129,6 +129,7 @@ I. ADAPTS Experiment Setup
 			
 			
 	f) Run Frenetic and setup default routing on the controller
+	
 		1)	Login as the frenetic user and start up frenetic on the controller
 			sudo -i -u frenetic
 			eval `opam config env` #May need to run this again...twice
@@ -139,6 +140,7 @@ I. ADAPTS Experiment Setup
 		3)	You should see the details in the frenetic console, each switch gets updated to send all packets out all ports
 		
 	g) Develop basic routing for network
+	
 		1) Go ahead and start close frenetic if running and start it up again, you should have blank OpenFlow tables displayed in the console.
 		2) Login to server1, server2, server3 and attempt to ping each of the other servers. All the pings should fail.
 		1) The first step in getting the network setup properly invovles writing the initial setup rules by which frenetic will route traffic. This is done through experimentation with frenetic.
@@ -174,6 +176,7 @@ I. ADAPTS Experiment Setup
 			through the port leading to the slave-switch-1. Then once the packets reach slave-switch-1, that swtich will have its own rules to distribute the packets appropriately (user1 and user2 packets go to their appropriate ports and user5 goes to the slave-switch-1-1)
 			
 	h)	Create the packet captures for calculating the suspiciousness scores
+	
 		1) If you haven't already, we need to install tshark on each of the switches. When prompted if you want to allow non superusers to capture packets, select No.
 			sudo apt-get install -y tshark
 		2) Each switch will need to have a specific tshark script which is slightly different depending on which devices are connected to which ports.
@@ -214,6 +217,7 @@ I. ADAPTS Experiment Setup
 				INSERT INTO `mtd`.`devices`(`deviceID`,`name`,`type`,`ipv4`,`ipv6`,`mac`) VALUES(4,'server3',2,'10.0.0.3',' ',' ');
 		
 	h-alternative) Calculate suspiciousness scores for the preloaded dataset
+	
 		1)	Navigate to dolus-defensebypretense/python
 		2)	Modify the calcSS.py and calcSSByTime.py scripts to use your database username (mtd) and password (whatever you set it to above)
 		3)	Run the scripts one after the other
@@ -222,6 +226,7 @@ I. ADAPTS Experiment Setup
 		4) Suspiciousness Scores are calculated and stored in the suspiciousness_scores and the suspiciousness_scores_by_time tables
 			
 	i) The results are sored in the database and cab be viewed in the Admin UI by navigating to:
+	
 		http://(public ip for the controller)//pages/index.php
 		Login with the default username/password of mtd/admin
 		View the suspiciousness scores for each device under the suspiciousness menu item
